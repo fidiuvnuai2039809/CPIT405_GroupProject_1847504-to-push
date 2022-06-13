@@ -104,7 +104,7 @@ imgLikesAttrib.hidden = true;
 
   // xhr.open("GET", "https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&per_page=10&format=json&nojsoncallback=1&extras=url_w", true);
   //   xhr.setRequestHeader("api_key", "6224b5b7fcfc0bee93ab038108a46c1b");
-  xhr.open("GET", "https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&per_page=10&format=json&nojsoncallback=1&api_key=6224b5b7fcfc0bee93ab038108a46c1b&extras=url_w", false);
+  xhr.open("GET", "https://api.flickr.com/services/rest/?per_page=10&format=json&nojsoncallback=1&api_key=6224b5b7fcfc0bee93ab038108a46c1b&extras=url_w&method=flickr.photos.search&text=tree&safe_search=1", false);
   //xhr.setRequestHeader("api_key", "6224b5b7fcfc0bee93ab038108a46c1b");
   
   xhr.send();
@@ -146,7 +146,7 @@ for ($i = 0; $i <= 9; $i++) {
    try {
   $sql = "INSERT INTO pictures (pic_name, pic_likes, pic_url) VALUES ($nameAttrib, $likesAttrib, $urlAttrib)";
   // use exec() because no results are returned
-  $conn->exec($sql);
+  $$GLOBALS["pdo"]->exec($sql);
   echo "New record created successfully";
 } catch(PDOException $e) {
   echo $sql . "<br>" . $e->getMessage();
